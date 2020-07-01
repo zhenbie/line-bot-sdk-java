@@ -40,7 +40,7 @@ public class EchoApplication {
 
     @EventMapping
     public Message handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
-        log.info("event: " + event);
+        log.info("接收到消息事件TextMessageContent: " + event);
         final String originalMessageText = event.getMessage().getText();
         return new TextMessage(originalMessageText);
     }
