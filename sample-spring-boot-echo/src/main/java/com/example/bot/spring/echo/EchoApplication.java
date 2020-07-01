@@ -16,6 +16,8 @@
 
 package com.example.bot.spring.echo;
 
+import java.io.IOException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -25,7 +27,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class EchoApplication {
     private final Logger log = LoggerFactory.getLogger(EchoApplication.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         SpringApplication.run(EchoApplication.class, args);
     }
 }
