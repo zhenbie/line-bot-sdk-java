@@ -21,21 +21,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-
-/**
- * @author zhenbl
- */
 @SpringBootApplication
 public class EchoApplication {
     private final Logger log = LoggerFactory.getLogger(EchoApplication.class);
 
-    public static Path downloadedContentDir;
-
-    public static void main(String[] args)  throws IOException {
-        downloadedContentDir = Files.createTempDirectory("line-bot");
+    public static void main(String[] args) {
         SpringApplication.run(EchoApplication.class, args);
     }
 }
