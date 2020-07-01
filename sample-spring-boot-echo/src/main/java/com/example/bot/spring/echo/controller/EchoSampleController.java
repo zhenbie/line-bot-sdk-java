@@ -16,6 +16,7 @@
 
 package com.example.bot.spring.echo.controller;
 
+import com.example.bot.spring.echo.EchoApplication;
 import com.google.common.io.ByteStreams;
 import com.linecorp.bot.client.LineBlobClient;
 import com.linecorp.bot.client.LineMessagingClient;
@@ -570,7 +571,7 @@ public class EchoSampleController {
 
     private static DownloadedContent createTempFile(String ext) {
         String fileName = LocalDateTime.now().toString() + '-' + UUID.randomUUID() + '.' + ext;
-        Path tempFile = KitchenSinkApplication.downloadedContentDir.resolve(fileName);
+        Path tempFile = EchoApplication.downloadedContentDir.resolve(fileName);
         tempFile.toFile().deleteOnExit();
         return new DownloadedContent(
                 tempFile,
