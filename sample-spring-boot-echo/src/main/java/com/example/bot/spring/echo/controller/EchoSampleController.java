@@ -18,6 +18,7 @@ package com.example.bot.spring.echo.controller;
 
 import com.linecorp.bot.model.event.Event;
 import com.linecorp.bot.model.event.MessageEvent;
+import com.linecorp.bot.model.event.message.StickerMessageContent;
 import com.linecorp.bot.model.event.message.TextMessageContent;
 import com.linecorp.bot.model.message.Message;
 import com.linecorp.bot.model.message.TextMessage;
@@ -32,9 +33,14 @@ public class EchoSampleController {
 
     @EventMapping
     public Message handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
-        log.info("接收到消息事件TextMessageContent: " + event);
+        log.info("接收到文本消息事件TextMessageContent: " + event);
         final String originalMessageText = event.getMessage().getText();
         return new TextMessage(originalMessageText);
+    }
+
+    @EventMapping
+    public void handleStickerMessageEvent(MessageEvent<StickerMessageContent> event) {
+        log.info("接收到贴图消息事件StickerMessageContent: " + event);
     }
 
     @EventMapping
