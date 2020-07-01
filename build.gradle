@@ -272,7 +272,7 @@ task codeCoverageReport(type: JacocoReport) {
                             name project.name
                             packaging 'jar'
                             description project.description
-                            url 'https://github.com/line/line-bot-sdk-java'
+                            url 'https://github.com/zhenbie/line-bot-sdk-java'
 
                             scm {
                                 url 'scm:git@github.com:line/line-bot-sdk-java.git'
