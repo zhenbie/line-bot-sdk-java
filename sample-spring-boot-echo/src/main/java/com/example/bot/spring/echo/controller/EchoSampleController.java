@@ -76,6 +76,7 @@ public class EchoSampleController {
 
     @EventMapping
     public void handleLocationMessageEvent(MessageEvent<LocationMessageContent> event) {
+        log.info("接收到位置消息事件LocationMessageContent: " + event);
         LocationMessageContent locationMessage = event.getMessage();
         reply(event.getReplyToken(), new LocationMessage(
                 locationMessage.getTitle(),
@@ -87,6 +88,7 @@ public class EchoSampleController {
 
     @EventMapping
     public void handleFileMessageEvent(MessageEvent<FileMessageContent> event) {
+        log.info("接收到文件消息事件FileMessageContent: " + event);
         this.reply(event.getReplyToken(),
                 new TextMessage(String.format("Received '%s'(%d bytes)",
                         event.getMessage().getFileName(),
@@ -95,23 +97,27 @@ public class EchoSampleController {
 
     @EventMapping
     public void handleUnfollowEvent(UnfollowEvent event) {
+        log.info("接收到不再关注消息事件UnfollowEvent: " + event);
         log.info("unfollowed this bot: {}", event);
     }
 
     @EventMapping
     public void handleFollowEvent(FollowEvent event) {
+        log.info("接收到关注消息事件FollowEvent: " + event);
         String replyToken = event.getReplyToken();
-        this.replyText(replyToken, "Got followed event");
+        this.replyText(replyToken, "多谢你关注Aquiver，点击上面的图片开始领取优惠券。");
     }
 
     @EventMapping
     public void handleJoinEvent(JoinEvent event) {
+        log.info("接收到加入消息事件JoinEvent: " + event);
         String replyToken = event.getReplyToken();
         this.replyText(replyToken, "Joined " + event.getSource());
     }
 
     @EventMapping
     public void handlePostbackEvent(PostbackEvent event) {
+        log.info("接收到回发消息事件PostbackEvent: " + event);
         String replyToken = event.getReplyToken();
         this.replyText(replyToken,
                 "Got postback data " + event.getPostbackContent().getData() + ", param " + event
@@ -126,6 +132,7 @@ public class EchoSampleController {
 
     @EventMapping
     public void handleMemberJoined(MemberJoinedEvent event) {
+        log.info("接收到成员消息事件MemberJoinedEvent: " + event);
         String replyToken = event.getReplyToken();
         this.replyText(replyToken, "Got memberJoined message " + event.getJoined().getMembers()
                 .stream().map(Source::getUserId)
